@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny: All client-side direct reads and writes are blocked by default.
+    // All authoritative mutations to access_logs, viewer_sessions, document_stats,
+    // and ip_blocks are performed authoritatively by the backend via Firebase Admin SDK.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Explicit restrictive rules for protected collections:
+    // Clients are strictly forbidden from writing or querying directly without backend authorization.
+    match /access_logs/{logId} {
+      allow read, write: if false;
+    }
+
+    match /viewer_sessions/{sessionId} {
+      allow read, write: if false;
+    }
+
+    match /document_stats/{docId} {
+      allow read, write: if false;
+    }
+
+    match /ip_blocks/{blockId} {
+      allow read, write: if false;
+    }
+  }
+}

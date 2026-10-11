@@ -1,0 +1,6 @@
+{
+  "name": "Secure PDF Viewer",
+  "description": "Security-focused PDF document viewer protected by location-permission gating and short-lived session authorization.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
